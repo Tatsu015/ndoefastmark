@@ -6,16 +6,17 @@ import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(String);
 
   useEffect(
     () => {
-      async function loadData() {
-        const response = await axios('http://127.0.0.1:5000');
-        setData(response.data);
-      }
+      // async function loadData() {
+      //   const response = await axios('http://127.0.0.1:5000');
+      //   setData(response.data);
+      // }
 
-      loadData();
+      // loadData();
+      setData('testdata')
     }, []
   );
 
@@ -29,7 +30,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <div>start</div>
         <div>{data}</div>
+        <div>end</div>
       </main>
     </div>
   )
