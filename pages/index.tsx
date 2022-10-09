@@ -2,12 +2,13 @@ import axios from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
-import answer from '../image/answer/sample_01.jpeg'
+// import answer from '../image/answer/sample_01.jpeg'
 
 const Home: NextPage = () => {
-  const [data, setData] = useState(String);
+  const [data, setData] = useState<string>();
+  const [previewImage, setPreviewImage] = useState<string>();
 
   useEffect(
     () => {
@@ -30,9 +31,21 @@ const Home: NextPage = () => {
       <div>start</div>
       <div>{data}</div>
       <div>end</div>
-      <Image src={answer} alt='answer' />
-      <main className={styles.main}>
-      </main>
+      {/* <Image src={answer} alt='answer' /> */}
+      <input
+        id='image'
+        name='image'
+        type='file'
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          if (event?.target?.files?.[0]) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              setPreviewImage(reader.result as string)
+            };
+            reader.readAsDataURL(file);
+          }
+        }} />
     </div>
   )
 }
