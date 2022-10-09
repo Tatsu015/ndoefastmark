@@ -18,7 +18,6 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    # Access-Control-Allow-Origin
     return {"message": "hello world!"}
 
 if __name__ == "__main__":

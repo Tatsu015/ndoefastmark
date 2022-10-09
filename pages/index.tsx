@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import answer from '../image/answer/sample_01.jpeg'
 
 const Home: NextPage = () => {
   const [data, setData] = useState(String);
@@ -26,10 +27,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <div>start</div>
+      <div>{data}</div>
+      <div>end</div>
+      <Image src={answer} alt='answer' />
       <main className={styles.main}>
-        <div>start</div>
-        <div>{data}</div>
-        <div>end</div>
       </main>
     </div>
   )
