@@ -10,16 +10,13 @@ const Home: NextPage = () => {
 
   useEffect(
     () => {
-      // async function loadData() {
-      //   const response = await axios('http://127.0.0.1:5000');
-      //   setData(response.data);
-      // }
-
-      // loadData();
-      setData('testdata')
-    }, []
-  );
-
+      axios
+        .get('http://127.0.0.1:5000/')
+        .then((res) => {
+          setData(res.data.message);
+        })
+        .catch((error) => console.error(error));
+    }, []);
 
   return (
     <div className={styles.container}>
